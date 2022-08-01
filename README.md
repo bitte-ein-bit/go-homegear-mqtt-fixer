@@ -16,14 +16,17 @@ place this in `/etc/systemd/system/mqtt-forwarder.service`
 
 ```
 [Unit]
-Description=mqtt-forwarder - fixes homegear issues with homematic energy sensor
-After=network.target
+Description=fixes homegear issues with homematic energy sensor
+After=homegear.target
+Wants=homegear.target
+StartLimitIntervalSec=0
 
 [Service]
 User=root
 WorkingDirectory=/tmp
 ExecStart=/usr/local/bin/forwarder
 Restart=always
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target

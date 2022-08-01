@@ -93,7 +93,7 @@ func main() {
 			}
 			var value float32
 			if name == "IEC_ENERGY_COUNTER" {
-				value = float32(int(v)) / 1000
+				value = float32(int(v)) / 10000
 			}
 			if name == "IEC_POWER" {
 				value = float32(int32(v)) / 100
