@@ -93,6 +93,10 @@ func main() {
 			}
 			var value float32
 			if name == "IEC_ENERGY_COUNTER" {
+				if v == 0 {
+					fmt.Printf("Skipping possible invalid energy counter with value 0")
+					continue
+				}
 				value = float32(int(v)) / 10000
 			}
 			if name == "IEC_POWER" {
