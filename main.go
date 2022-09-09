@@ -49,6 +49,8 @@ func connect() mqtt.Client {
 	opts.SetDefaultPublishHandler(messagePubHandler)
 	opts.OnConnect = connectHandler
 	opts.OnConnectionLost = connectLostHandler
+	opts.SetKeepAlive(time.Second * 2)
+	opts.SetAutoReconnect(true)
 	client := mqtt.NewClient(opts)
 	if token := client.Connect(); token.Wait() && token.Error() != nil {
 		panic(token.Error())
